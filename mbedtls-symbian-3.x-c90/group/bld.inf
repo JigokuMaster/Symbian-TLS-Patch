@@ -1,0 +1,10 @@
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+PRJ_MMPFILES
+
+//mbedtls_stlstatic.mmp
+mbedtls_stl.mmp
+//exmbedtls.mmp
