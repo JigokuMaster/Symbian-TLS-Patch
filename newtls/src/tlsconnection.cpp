@@ -261,7 +261,7 @@ void CTlsConnection::CancelAll()
  */
 {
 	LOG("CTlsConnection::CancelAll()");
-	if(iDataMode)
+	if(iDataRead)
 	{
 		CancelRecv();
 	}	
