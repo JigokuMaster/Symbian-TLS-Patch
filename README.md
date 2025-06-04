@@ -10,8 +10,10 @@ this repo contains:
 
 * source-code of  MBedTLS for Symbian , also forked from [shinovon - nnproject](https://github.com/shinovon/mbedtls-symbian)
 
-binaries can be downloaded from [bin](./bin) directory.
+~~binaries can be downloaded from [bin](./bin) directory.~~
 
-installation is done manually , the phone should be hacked , download ARM*.zip and just extract dll files to C:\\sys\\bin
+installation is done manually , the phone should be hacked ~~, download ARM*.zip and just extract dll files to C:\\sys\\bin~~
 
-note: i haven't tested ARM binaries for S60 yet.  they're not that different from shinovon' binaries (if you already have these). 
+~~note: i haven't tested ARM binaries for S60 yet.  they're not that different from shinovon' binaries (if you already have these)~~
+
+new binaries should be downloaded from the [release](https://github.com/JigokuMaster/Symbian-TLS-Patch/releases) page
