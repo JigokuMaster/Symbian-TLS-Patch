@@ -44,6 +44,11 @@ EXPORT_C int mbedtls_hardware_poll(void *data, unsigned char *output, size_t len
 #endif
 #include <stdarg.h>
 
+EXPORT_C int vsnprintf(char *buf, size_t  n, char const *fmt, va_list va)
+{
+	return stbsp_vsnprintf(buf, (int)n, fmt, va);
+}
+
 EXPORT_C int snprintf(char *s, size_t n, const char* fmt, ...)
 {
     int ret;

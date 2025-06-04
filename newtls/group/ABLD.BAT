@@ -3,7 +3,7 @@
 REM Bldmake-generated batch file - ABLD.BAT
 REM ** DO NOT EDIT **
 
-perl -S ABLD.PL "\Symbian\myprojects\newtls\group\\" %1 %2 %3 %4 %5 %6 %7 %8 %9
+perl -S ABLD.PL "\Symbian\myprojects\Symbian-TLS-Patch\newtls\group\\" %1 %2 %3 %4 %5 %6 %7 %8 %9
 if errorlevel==1 goto CheckPerl
 goto End
 

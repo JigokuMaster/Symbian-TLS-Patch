@@ -1070,4 +1070,5 @@ EXPORTS
 	psa_wipe_all_key_slots @ 1069 NONAME
 	psa_wipe_key_slot @ 1070 NONAME
 	snprintf @ 1071 NONAME
+	vsnprintf @ 1072 NONAME
 

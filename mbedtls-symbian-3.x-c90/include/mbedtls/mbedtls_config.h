@@ -478,7 +478,7 @@
  *
  * Uncomment to use your own hardware entropy collector.
  */
-#if defined(ESTLIB)
+#ifdef __SYMBIAN32__
 #define MBEDTLS_ENTROPY_HARDWARE_ALT
 #endif
 
@@ -1071,7 +1071,7 @@
  *
  * Uncomment this macro to disable the built-in platform entropy functions.
  */
-#if defined(ESTLIB)
+#ifdef __SYMBIAN32__
 #define MBEDTLS_NO_PLATFORM_ENTROPY
 #endif
 

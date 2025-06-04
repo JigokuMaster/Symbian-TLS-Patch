@@ -6,7 +6,7 @@
 #ifndef LOG_FILE
 #define LOG_FILE "C:\\ssl.log"
 #endif
-void LOG(char* fmt, ...);
+extern "C" void LOG(char* fmt, ...);
 #else
 #define LOG(arg...)	
 

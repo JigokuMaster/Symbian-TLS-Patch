@@ -31,11 +31,7 @@
 #endif
 
 #if defined(MBEDTLS_DEBUG_C)
-#ifdef __WINSCW__
-#define MBEDTLS_DEBUG_STRIP_PARENS(ARGS...)   (##ARGS)
-#else
 #define MBEDTLS_DEBUG_STRIP_PARENS(...)   __VA_ARGS__
-#endif
 
 #define MBEDTLS_SSL_DEBUG_MSG(level, args)                    \
     mbedtls_debug_print_msg(ssl, level, __FILE__, __LINE__,    \
@@ -46,6 +42,7 @@
 
 #define MBEDTLS_SSL_DEBUG_BUF(level, text, buf, len)           \
     mbedtls_debug_print_buf(ssl, level, __FILE__, __LINE__, text, buf, len)
+
 
 #if defined(MBEDTLS_BIGNUM_C)
 #define MBEDTLS_SSL_DEBUG_MPI(level, text, X)                  \

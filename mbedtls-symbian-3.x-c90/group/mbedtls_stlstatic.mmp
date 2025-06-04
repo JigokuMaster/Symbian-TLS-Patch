@@ -1,6 +1,6 @@
 TARGET		  mbedtls_stl.lib
 TARGETTYPE	  lib
-UID			 0 0
+
 
 SYSTEMINCLUDE     ../include/psa
 SYSTEMINCLUDE     ../include

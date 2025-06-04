@@ -130,6 +130,7 @@ CTlsConnection::~CTlsConnection()
 //		delete iGenericSocket;
 //		iGenericSocket = NULL;
 //	}
+
 	if (iClientCert) {
 		delete iClientCert;
 		iClientCert = NULL;
@@ -148,7 +149,9 @@ CTlsConnection::CTlsConnection() : CActive(EPriorityHigh),
   iReceivingData(EFalse),
   iSendingData(EFalse),
   iHandshaking(EFalse),
-  iHandshaked(EFalse)
+  iHandshaked(EFalse),
+  iDataRead(EFalse),
+  iDataSent(EFalse)
 /**
  * Constructor .
  * Sets the Active object priority.
@@ -258,11 +261,20 @@ void CTlsConnection::CancelAll()
  */
 {
 	LOG("CTlsConnection::CancelAll()");
-	CancelRecv();
-	CancelSend();
+	if(iDataMode)
+	{
+		CancelRecv();
+	}	
+	if(iDataSent)
+	{
+		CancelSend();
+	}	
 	if (iHandshake) {
 		iHandshake->Cancel(KErrNone);
 	}
+	iDataRead = EFalse;
+	iDataSent = EFalse;
+
 }
 
 void CTlsConnection::CancelHandshake()
@@ -282,11 +294,15 @@ void CTlsConnection::CancelRecv()
 {
 	LOG("CTlsConnection::CancelRecv()");
 	if (iSocket) {
-		iSocket->CancelRead();
 		iSocket->CancelRecv();
+		LOG("iSocket->CancelRecv()");
+		iSocket->CancelRead();
+		LOG("iSocket->CancelRead()");
+
 	}
 	if (iRecvData) {
 		iRecvData->Cancel(KErrNone);
+		LOG("iRecvData->Cancel(KErrNone)");
 	}
 }
 
@@ -342,13 +358,15 @@ void CTlsConnection::Close()
  */
 {
 	LOG("CTlsConnection::Close()");
-	CancelAll();
+	CancelAll();	
 //	if (iMbedContext) {
 //		iMbedContext->SslCloseNotify();
 //	}
 	if (iSocket) {
 		iSocket->Close();
 	}
+	LOG("CTlsConnection::Close() OK");
+
 //	Reset();
 }
 
@@ -476,7 +494,10 @@ void CTlsConnection::Recv(TDes8& aDesc, TRequestStatus & aStatus)
 {
 	LOG("CTlsConnection::Recv()");
 	if (RecvData(aDesc, aStatus))
+	{	
 		iRecvData->SetSockXfrLength(NULL);
+		iDataRead = ETrue;
+	}	
 }
 
 void CTlsConnection::RecvOneOrMore(TDes8& aDesc, TRequestStatus& aStatus, TSockXfrLength& aLen)
@@ -495,7 +516,10 @@ void CTlsConnection::RecvOneOrMore(TDes8& aDesc, TRequestStatus& aStatus, TSockX
 {
 	LOG("CTlsConnection::RecvOneOrMore(): %d", aDesc.MaxLength());
 	if (RecvData(aDesc, aStatus))
+	{	
 		iRecvData->SetSockXfrLength(&aLen());
+		iDataRead = ETrue;
+	}	
 }
 
 void CTlsConnection::RenegotiateHandshake(TRequestStatus& aStatus)
@@ -538,7 +562,10 @@ void CTlsConnection::Send(const TDesC8& aDesc, TRequestStatus& aStatus)
  */
 {
 	if (SendData(aDesc, aStatus))
+	{	
 		iSendData->SetSockXfrLength(NULL);
+		iDataSent = ETrue;
+	}	
 }
 
 void CTlsConnection::Send(const TDesC8& aDesc, TRequestStatus& aStatus, TSockXfrLength& aLen)
@@ -553,7 +580,10 @@ void CTlsConnection::Send(const TDesC8& aDesc, TRequestStatus& aStatus, TSockXfr
  */
 {
 	if (SendData(aDesc, aStatus))
+	{	
 		iSendData->SetSockXfrLength(&aLen());
+		iDataSent = ETrue;
+	}	
 }
 
 const CX509Certificate* CTlsConnection::ServerCert()

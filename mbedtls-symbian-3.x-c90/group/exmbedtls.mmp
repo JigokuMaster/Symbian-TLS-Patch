@@ -13,8 +13,8 @@ SYSTEMINCLUDE ../include/estlib/
 //USERINCLUDE     ../include/mbedtls
 
 
-CAPABILITY All -Tcb
-//CAPABILITY NetworkServices
+//CAPABILITY All -Tcb
+CAPABILITY NetworkServices
 NOSTRICTDEF
 
 SOURCEPATH ../programs/ssl

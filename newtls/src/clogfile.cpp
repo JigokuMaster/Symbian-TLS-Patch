@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 #ifdef LOG_FILE
-void LOG(char* fmt, ...)
+extern "C" void LOG(char* fmt, ...)
 {
     va_list marker;	
     FILE* f = fopen(LOG_FILE,"a");

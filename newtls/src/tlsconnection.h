@@ -175,6 +175,8 @@ protected:
 	TBool iHandshaking;
 	TBool iHandshaked;
 	TBool iDataMode;
+	TBool iDataRead;
+	TBool iDataSent;
 	
 };
 
