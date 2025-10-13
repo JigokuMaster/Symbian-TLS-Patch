@@ -93,5 +93,5 @@ PRJ_MMPFILES
 mbedtls_stl.mmp
 mbedtls341_stl.mmp
 mbedtls_stlstatic.mmp
-//mbedtls_static.mmp
+mbedtls_static.mmp
 //exmbedtls.mmp
