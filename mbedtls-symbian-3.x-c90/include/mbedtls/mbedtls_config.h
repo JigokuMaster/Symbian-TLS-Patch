@@ -2746,7 +2746,7 @@
  *
  * This module provides networking routines.
  */
-#if !defined(ESTLIB)
+#ifndef ESTLIB
 #define MBEDTLS_NET_C
 #endif
 
@@ -3319,7 +3319,9 @@
  *
  * Enable this layer to allow use of mutexes within mbed TLS
  */
+//#ifndef ESTLIB
 //#define MBEDTLS_THREADING_C
+//#endif
 
 /**
  * \def MBEDTLS_TIMING_C
