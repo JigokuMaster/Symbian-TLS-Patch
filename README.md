@@ -10,4 +10,6 @@ this repo contains:
 
 * source-code of  MBedTLS for Symbian , also forked from [shinovon - nnproject](https://github.com/shinovon/mbedtls-symbian)
 
-binaries should be downloaded from the [release](https://github.com/JigokuMaster/Symbian-TLS-Patch/releases) page
+installation is done manually the phone should be hacked first.
+
+binaries can be downloaded from the [release](https://github.com/JigokuMaster/Symbian-TLS-Patch/releases) page.
