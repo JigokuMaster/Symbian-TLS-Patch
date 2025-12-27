@@ -1,5 +1,12 @@
 TLS 1.2 patch for Symbian 9.x 
 
+## Note:
+
+This repo is mainly for UIQ3, The latest binaries for S60 platform should be downloaded from    
+
+[http://nnproject.cc/tls](http://nnproject.cc/tls)
+
+
 this repo contains:
 
 * binaries for (S60v3, UIQ3,  x86 SDK Emulator),  built without PIPS/OpenC runtime.
